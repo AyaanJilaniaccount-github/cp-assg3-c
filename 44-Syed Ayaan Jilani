@@ -1,0 +1,51 @@
+/*
+  Roll No.:44
+  Student Name:Syed Ayaan Jilani
+  Program Title:WAP to design a calculator with basic operations using switch
+
+  Task Given By:
+    - Roll No. of Assignee:49
+    - Assignee Name:Ansari Usman
+*/
+
+#include <stdio.h>
+
+int main() {
+    char operator;
+    double num1, num2, result;
+
+    // Prompt the user for input
+    printf("Enter an operator (+, -, *, /): ");
+    scanf(" %c", &operator);
+
+    printf("Enter two numbers: ");
+    scanf("%lf %lf", &num1, &num2);
+
+    // Perform the operation based on the operator
+    switch (operator) {
+        case '+':
+            result = num1 + num2;
+            printf("%.2lf + %.2lf = %.2lf\n", num1, num2, result);
+            break;
+        case '-':
+            result = num1 - num2;
+            printf("%.2lf - %.2lf = %.2lf\n", num1, num2, result);
+            break;
+        case '*':
+            result = num1 * num2;
+            printf("%.2lf * %.2lf = %.2lf\n", num1, num2, result);
+            break;
+        case '/':
+            if (num2 != 0) {
+                result = num1 / num2;
+                printf("%.2lf / %.2lf = %.2lf\n", num1, num2, result);
+            } else {
+                printf("Error: Division by zero is not allowed.\n");
+            }
+            break;
+        default:
+            printf("Error: Invalid operator.\n");
+    }
+
+    return 0;
+}

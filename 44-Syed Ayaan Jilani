@@ -1,7 +1,7 @@
 /*
   Roll No.:44
   Student Name:Syed Ayaan Jilani
-  Program Title:WAP to design a calculator with basic operations using switch
+  Program Title: Write a C program to find Strong numbers within a range of number using do while loop.
 
   Task Given By:
     - Roll No. of Assignee:49
@@ -10,43 +10,46 @@
 
 #include <stdio.h>
 
-int main() {
-    char operator;
-    double num1, num2, result;
-
-    // Prompt the user for input
-    printf("Enter an operator (+, -, *, /): ");
-    scanf(" %c", &operator);
-
-    printf("Enter two numbers: ");
-    scanf("%lf %lf", &num1, &num2);
-
-    // Perform the operation based on the operator
-    switch (operator) {
-        case '+':
-            result = num1 + num2;
-            printf("%.2lf + %.2lf = %.2lf\n", num1, num2, result);
-            break;
-        case '-':
-            result = num1 - num2;
-            printf("%.2lf - %.2lf = %.2lf\n", num1, num2, result);
-            break;
-        case '*':
-            result = num1 * num2;
-            printf("%.2lf * %.2lf = %.2lf\n", num1, num2, result);
-            break;
-        case '/':
-            if (num2 != 0) {
-                result = num1 / num2;
-                printf("%.2lf / %.2lf = %.2lf\n", num1, num2, result);
-            } else {
-                printf("Error: Division by zero is not allowed.\n");
-            }
-            break;
-        default:
-            printf("Error: Invalid operator.\n");
+// Function to calculate the factorial of a number
+int factorial(int n) {
+    int fact = 1;
+    while (n > 0) {
+        fact *= n;
+        n--;
     }
+    return fact;
+}
+
+int main() {
+    int lower, upper, num, temp, digit, sum;
+
+    // Input the range
+    printf("Enter the lower bound of the range: ");
+    scanf("%d", &lower);
+    printf("Enter the upper bound of the range: ");
+    scanf("%d", &upper);
+
+    printf("Strong numbers between %d and %d are: ", lower, upper);
+
+    num = lower;
+    do {
+        temp = num;
+        sum = 0;
+
+        // Calculate the sum of factorials of digits
+        do {
+            digit = temp % 10;
+            sum += factorial(digit);
+            temp /= 10;
+        } while (temp > 0);
+
+        // Check if the number is strong
+        if (sum == num) {
+            printf("%d ", num);
+        }
+
+        num++;
+    } while (num <= upper);
 
     return 0;
 }
-
